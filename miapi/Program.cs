@@ -19,7 +19,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ConexionSql")));
 
-
+// Activo todos 
 
 //Agregamos los repositorios
 builder.Services.AddScoped<ICategoriaRepositorio, CategoriaRepositorio>();
