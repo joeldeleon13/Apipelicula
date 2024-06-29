@@ -11,5 +11,6 @@ namespace miapi.Repositorio.IRepositorio
         bool IsUniqueUser(string usuario);
         Task<UsuarioLoginRespuestaDto> Login(UsuarioLoginDto usuarioLoginDto);
         Task<Usuario> Registro(UsuarioRegistroDto usuarioRegistroDto);
+        Task<bool> BorrarUsuario(int usuarioId);
     }
 }

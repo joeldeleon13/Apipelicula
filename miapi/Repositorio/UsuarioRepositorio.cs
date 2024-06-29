@@ -127,5 +127,19 @@ namespace miapi.Repositorio
             return resp;
         }
 
+        public async Task<bool> BorrarUsuario(int usuarioId)
+        {
+            var usuario = await _bd.Usuario.FindAsync(usuarioId);
+            if (usuario == null)
+            {
+                return false; // Usuario no encontrado
+            }
+
+            _bd.Usuario.Remove(usuario);
+            await _bd.SaveChangesAsync();
+            return true; // Usuario borrado exitosamente
+        }
+
+
     }
 }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using miapi.Modelos;
 using miapi.Modelos.Dtos;
+using miapi.Repositorio;
 using miapi.Repositorio.IRepositorio;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -113,6 +114,24 @@ namespace miapi.Controllers
             _respuestaApi.IsSuccess = true;
             _respuestaApi.Result = respuestaLogin;
             return Ok(_respuestaApi);
+        }
+
+        [Authorize(Roles = "admin")]
+        [HttpDelete("{usuarioId}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> BorrarUsuario(int usuarioId)
+        {
+            var resultado = await _usRepo.BorrarUsuario(usuarioId);
+            if (!resultado)
+            {
+                return NotFound(new { message = "Usuario no encontrado" });
+            }
+
+            return NoContent(); // 204 No Content
         }
 
 
