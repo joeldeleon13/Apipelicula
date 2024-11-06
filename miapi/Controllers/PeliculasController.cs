@@ -157,7 +157,11 @@ namespace ApiPeliculas.Controllers
             }
             return Ok(itemPelicula);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <returns></returns>
         [AllowAnonymous]
         [HttpGet("Buscar")]
         public IActionResult Buscar(string nombre)
