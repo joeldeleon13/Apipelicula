@@ -9,6 +9,8 @@ namespace ApiPeliculas.Controllers
 {
     [Route("api/peliculas")]
     [ApiController]
+    //////////////////////
+    //////////////////// 
     public class PeliculasController : ControllerBase
     {
         private readonly IPeliculaRepositorio _pelRepo;
